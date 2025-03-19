@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultX - Authentication</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: black;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+    }
+    .auth-container {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.2);
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, #00C6FF, #0072FF);
+      border: none;
+      transition: 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
+    }
+    .right-side {
+      position: relative;
+      height: 100vh;
+      width: 50%;
+    }
+    .right-side iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* From Uiverse.io by cssbuttons-io */ 
+.fancy {
+ background-color: transparent;
+ border: 2px solid #000;
+ border-radius: 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ float: right;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ margin: 2;
+ outline: none;
+ overflow: visible;
+ padding: 1.5em 2em;
+ position: relative;
+ text-align: center;
+ text-decoration: none;
+ text-transform: none;
+ transition: all 0.3s ease-in-out;
+ user-select: none;
+ font-size: 13px;
+}
+
+.fancy::before {
+ content: " ";
+ width: 1.5625rem;
+ height: 2px;
+ background: white;
+ top: 50%;
+ left: 1.5em;
+ position: absolute;
+ transform: translateY(-50%);
+ transform-origin: center;
+ transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+ font-size: 1.125em;
+ line-height: 1.33333em;
+ padding-left: 2em;
+ display: block;
+ text-align: left;
+ transition: all 0.3s ease-in-out;
+ text-transform: uppercase;
+ text-decoration: none;
+ color: white;
+}
+
+.fancy .top-key {
+ height: 2px;
+ width: 1.5625rem;
+ top: -2px;
+ left: 0.625rem;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+ height: 2px;
+ width: 1.5625rem;
+ right: 1.875rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+ height: 2px;
+ width: 0.625rem;
+ right: 0.625rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+ color: white;
+ background: #5454bd;
+}
+
+.fancy:hover::before {
+ width: 0.9375rem;
+ background: white;
+}
+
+.fancy:hover .text {
+ color: white;
+ padding-left: 1.5em;
+}
+
+.fancy:hover .top-key {
+ left: -2px;
+ width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+ .fancy:hover .bottom-key-2 {
+ right: 0;
+ width: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex">
+    <!-- Left column - Auth Forms -->
+    <div class="flex-1 flex flex-col justify-center items-center px-6 lg:w-1/2">
+      <div class="auth-container w-full max-w-md">
+        <a href="index.html" class="text-cyan-400 font-bold text-2xl block mb-6">VaultX</a>
+        <h2 class="text-3xl font-extrabold text-white mb-4" id="auth-title">Sign in to your account</h2>
+        <p class="text-sm text-gray-300 mb-6" id="auth-subtitle">Or <button id="show-register" class="text-cyan-400 hover:underline">create a new account</button></p>
+        
+        <!-- Login Form -->
+        <form id="login-form-element" class="space-y-6">
+          <input id="login-username" name="username" type="text" placeholder="Username" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-transparent text-white placeholder-gray-400">
+          <input id="login-password" name="password" type="password" placeholder="Password" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-transparent text-white placeholder-gray-400">
+          <a class="fancy" href="#">
+            <span class="top-key"></span>
+            <span class="text">Sign In</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+          </a>
+        </form>
+        
+        <!-- Register Form -->
+        <form id="register-form-element" class="space-y-6 hidden">
+          <input id="register-name" name="name" type="text" placeholder="Full Name" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-transparent text-white placeholder-gray-400">
+          <input id="register-email" name="email" type="email" placeholder="Email" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-transparent text-white placeholder-gray-400">
+          <input id="register-username" name="username" type="text" placeholder="Username" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-transparent text-white placeholder-gray-400">
+          <input id="register-password" name="password" type="password" placeholder="Password" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-transparent text-white placeholder-gray-400">
+          <button type="submit" class="btn-primary w-full py-2 text-lg font-bold text-white rounded-md">Register</button>
+          <button id="show-login" type="button" class="w-full py-2 border border-gray-600 rounded-md text-white hover:bg-gray-800">Back to login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right column - 3D Hero Section -->
+    <div class="right-side hidden lg:block">
+      <iframe src="https://my.spline.design/coin-fdf42175c309e2566643957fe4290dd7/" frameborder="0"></iframe>
+    </div>
+  </div>
+  
+  <script src="js/auth.js"></script>
+</body>
+</html>

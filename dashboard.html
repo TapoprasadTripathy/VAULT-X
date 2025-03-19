@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultX - Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-card/80 backdrop-blur-lg border-b border-border sticky top-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="dashboard.html" class="text-primary font-bold text-xl">VaultX</a>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <a href="dashboard.html" class="text-foreground border-b-2 border-primary px-3 py-4 text-sm font-medium">Dashboard</a>
+            <a href="create-goal.html" class="text-muted-foreground hover:text-foreground px-3 py-4 text-sm font-medium">Create Goal</a>
+            <a href="rewards.html" class="text-muted-foreground hover:text-foreground px-3 py-4 text-sm font-medium">Rewards</a>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <button data-logout class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="md:flex md:items-center md:justify-between mb-8">
+      <div class="flex-1 min-w-0">
+        <h2 class="text-2xl font-bold leading-7 text-foreground sm:text-3xl sm:truncate">
+          Dashboard
+        </h2>
+      </div>
+      <div class="mt-4 flex md:mt-0 md:ml-4">
+        <a href="create-goal.html">
+          <button class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+            Create New Goal
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Total Saved Card -->
+      <div class="bg-card rounded-lg shadow-sm border border-border p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-primary/10 rounded-md p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-muted-foreground truncate">
+                Total Saved
+              </dt>
+              <dd>
+                <div class="text-lg font-medium text-foreground" id="total-saved">₹0</div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Goals Card -->
+      <div class="bg-card rounded-lg shadow-sm border border-border p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-primary/10 rounded-md p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-muted-foreground truncate">
+                Total Goals
+              </dt>
+              <dd>
+                <div class="text-lg font-medium text-foreground" id="total-goals">0</div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Goals Card -->
+      <div class="bg-card rounded-lg shadow-sm border border-border p-5">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-primary/10 rounded-md p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div class="ml-5 w-0 flex-1">
+            <dl>
+              <dt class="text-sm font-medium text-muted-foreground truncate">
+                Active Goals
+              </dt>
+              <dd>
+                <div class="text-lg font-medium text-foreground" id="active-goals">0</div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Savings Goals -->
+    <h3 class="text-lg leading-6 font-medium text-foreground mt-10 mb-5">
+      Your Savings Goals
+    </h3>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" id="goals-container">
+      <!-- Empty state (will be hidden when goals exist) -->
+      <div id="empty-goals" class="bg-card border border-border rounded-lg shadow-sm p-5 flex flex-col items-center justify-center text-center py-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-muted-foreground mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-muted-foreground">No savings goals yet</p>
+        <a href="create-goal.html">
+          <button class="mt-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+            Create your first goal
+          </button>
+        </a>
+      </div>
+      
+      <!-- Goal cards will be dynamically inserted here -->
+    </div>
+
+    <!-- Recent Activity -->
+    <h3 class="text-lg leading-6 font-medium text-foreground mt-10 mb-5">
+      Recent Activity
+    </h3>
+    <div class="bg-card shadow-sm border border-border overflow-hidden rounded-lg">
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Goal</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody id="transactions-table">
+          <tr id="empty-transactions">
+            <td colspan="4" class="text-center py-8 text-muted-foreground">
+              No transactions yet
+            </td>
+          </tr>
+          <!-- Transaction rows will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

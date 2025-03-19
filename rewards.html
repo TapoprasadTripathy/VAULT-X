@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaultX - Rewards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-card/80 backdrop-blur-lg border-b border-border sticky top-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <a href="dashboard.html" class="text-primary font-bold text-xl">VaultX</a>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <a href="dashboard.html" class="text-muted-foreground hover:text-foreground px-3 py-4 text-sm font-medium">Dashboard</a>
+            <a href="create-goal.html" class="text-muted-foreground hover:text-foreground px-3 py-4 text-sm font-medium">Create Goal</a>
+            <a href="rewards.html" class="text-foreground border-b-2 border-primary px-3 py-4 text-sm font-medium">Rewards</a>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <button data-logout class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="md:flex md:items-center md:justify-between mb-8">
+      <div class="flex-1 min-w-0">
+        <h2 class="text-2xl font-bold leading-7 text-foreground sm:text-3xl sm:truncate">
+          Your Rewards
+        </h2>
+      </div>
+    </div>
+
+    <!-- Available Rewards -->
+    <h3 class="text-lg leading-6 font-medium text-foreground mb-5">
+      Available Rewards
+    </h3>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" id="available-rewards">
+      <!-- Empty state (will be hidden when rewards exist) -->
+      <div id="empty-available-rewards" class="bg-card border border-border rounded-lg shadow-sm p-6 flex flex-col items-center justify-center text-center py-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-muted-foreground mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        <p class="text-muted-foreground">No rewards available yet</p>
+        <p class="text-sm text-muted-foreground mt-2">Complete savings goals to earn rewards</p>
+      </div>
+      
+      <!-- Reward cards will be dynamically inserted here -->
+      
+      <!-- Example Reward Card (hidden in empty state) -->
+      <div class="hidden reward-card bg-card border border-border rounded-lg shadow-sm relative">
+        <div class="absolute top-4 right-4 bg-yellow-500/10 px-2 py-1 rounded-full">
+          <span class="text-xs font-medium text-yellow-500">Cashback</span>
+        </div>
+        <div class="p-6">
+          <h4 class="font-semibold text-foreground text-lg">10% Cashback</h4>
+          <p class="text-muted-foreground mt-1">Get 10% back on your next goal deposit</p>
+          
+          <div class="mt-4 flex items-center text-sm text-muted-foreground">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="ml-2">Expires in 30 days</span>
+          </div>
+          
+          <div class="mt-6">
+            <button class="w-full py-2 px-4 bg-primary text-white rounded-md font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary redeem-btn" data-reward-id="1">
+              Redeem
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Redeemed Rewards -->
+    <h3 class="text-lg leading-6 font-medium text-foreground mt-10 mb-5">
+      Redeemed Rewards
+    </h3>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" id="redeemed-rewards">
+      <!-- Empty state (will be hidden when redeemed rewards exist) -->
+      <div id="empty-redeemed-rewards" class="bg-card border border-border rounded-lg shadow-sm p-6 flex flex-col items-center justify-center text-center py-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-muted-foreground mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-muted-foreground">No redeemed rewards yet</p>
+      </div>
+      
+      <!-- Redeemed reward cards will be dynamically inserted here -->
+    </div>
+
+    <!-- Reward Progress Section -->
+    <div class="mt-10 bg-card border border-border rounded-lg shadow-sm p-6">
+      <h3 class="text-lg font-medium text-foreground mb-5">Your Reward Progress</h3>
+      
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-foreground">Complete 5 savings goals</span>
+            <span class="text-sm font-medium text-foreground" id="goals-progress">0/5</span>
+          </div>
+          <div class="w-full bg-muted h-2 rounded-full">
+            <div class="bg-primary h-2 rounded-full" id="goals-progress-bar" style="width: 0%"></div>
+          </div>
+          <p class="text-xs text-muted-foreground mt-1">Reward: 20% Cashback</p>
+        </div>
+        
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-foreground">Save ₹100,000 total</span>
+            <span class="text-sm font-medium text-foreground" id="savings-progress">₹0/₹100,000</span>
+          </div>
+          <div class="w-full bg-muted h-2 rounded-full">
+            <div class="bg-primary h-2 rounded-full" id="savings-progress-bar" style="width: 0%"></div>
+          </div>
+          <p class="text-xs text-muted-foreground mt-1">Reward: Premium membership</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/rewards.js"></script>
+</body>
+</html>
